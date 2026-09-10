@@ -1,0 +1,12 @@
+schema: "classroom50/repo-config/v1"
+classroom: "ap-computer-science"
+assignment: "classes"
+owner:
+  username: "mrcallaghan"
+  id: 21110291
+  accepted_at: "2026-09-10T18:31:12Z"
+source:
+  owner: "NNHSAPCS202627"
+  owner_id: 308007504
+  repo: "classes"
+  branch: "main"
