@@ -7,9 +7,14 @@
 public class MileageTracker
 {
     /*
-     * 2. Define the instance variables (to store the object's attributes):
+     * 2. Define the instance variables, or attributes (to store the object's attributes):
+     *      - specify the visibility (e.g, private)
+     *          - public: accessible by any code in any class
+     *          - private: only accesible by method in this class
+     *      - specify the type (e.g., int, double, String, Turtle)
+     *      - specify the name (e.g., distanceDriven)
      */
-
+    private int distanceDriven;   // in units of miles
 
 
 
