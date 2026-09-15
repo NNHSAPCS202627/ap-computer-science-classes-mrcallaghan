@@ -8,18 +8,48 @@ public class MileageTracker
 {
     /*
      * 2. Define the instance variables (to store the object's attributes):
+     *      - specify the visibility (e.g., private, public)
+     *              public: accessible by any code in any class
+     *              private: only accessible by methods in this class
+     *      - specify the type (e.g., int, double, String, Turtle)
+     *      - specify the name (e.g., distanceDriven)
+     *      
+     *      Instance variables differ from local variables in the following ways:
+     *          - scoped to the class (accessible in all methods of the class)
+     *          - lifetime is the same as the object
+     *          - automatically initialized to a default value (0, false, null)
+     *          - best practice is to not immediately initialize them
      */
+    private int distanceDriven;     // in units of miles
+    private int fuelConsumed;       // in units of gallons
+    private String vin;             // vehicle identification number
 
 
-
-
-
-
-    
     /*
      * 3. Define the constructor(s) to initialize objects:
+     *      - responsible for initializing the newly created objects
+     *      - invoked automatically via the new operator
+     *      - name of the constructor must match the name of the class
+     *      - has no return type( not even void)
+     *      - multiple constructors can be defined for a class
+     *      - one constructor may call on another (with restrictions)
      */
     
+    /**
+     * Default constructor for the MileageTracker class.
+     *      Initializes the objects miles driven to 0 and fuel consumed to 0 and vin to null (all default values).
+     */
+    public MileageTracker()
+    {
+        /*
+         * The "this" reserved word references the current object (like 'self' in Python).
+         * Its usage is highly encouraged, but not always required.
+         */
+        this.distanceDriven = 0;
+        this.fuelConsumed = 0;
+        this.vin = null;
+        System.out.println("Executing default constructor in the Mileagetracker class...");
+    }
     
     
     
@@ -107,6 +137,12 @@ public class MileageTracker
     public void setVIN(String vin)
     {
         //vin = vin;
+    }
+    
+    public static void main(String[] args)
+    {
+        MileageTracker car1 = new MileageTracker();
+        System.out.println(car1);
     }
 }
 
