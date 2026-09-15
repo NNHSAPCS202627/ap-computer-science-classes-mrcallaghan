@@ -13,21 +13,50 @@ public class MileageTracker
      *          - private: only accesible by method in this class
      *      - specify the type (e.g., int, double, String, Turtle)
      *      - specify the name (e.g., distanceDriven)
+     *      
+     *      Instance variables differ from local variables in the following ways:
+     *          - scoped to the entire class (accessible in any instance method in the class)
+     *          - lifetime is the same as the object
+     *          - automatically initialized to default value (0, false, null)
+     *          - best practice is not to immediately initialize instance variables
      */
-    private int distanceDriven;   // in units of miles
+    private int distanceDriven;     // in units of miles
+    private int fuelConsumed;       // in units of gallons
+    private String vin;             // vehicle identification number
 
-
-
-
-
-    
     /*
      * 3. Define the constructor(s) to initialize objects:
+     *       responsible for initializing the newly created object
+     *       invoked automatically via the new operator
+     *       name of the consturctor must match the name of the class
+     *       has no return type (not even void)
+     *       multiple constructors may be defined for a class
      */
     
+    /**
+     * Default constructor intitializes a MileageTracker obejct with 0 miles driven, 0 fuel consumed, and a null vin.
+     */
+    public MileageTracker()
+    {
+        /*
+         * The "this" reserved word references the current object (like "self" in Python).
+         *      Its usage is highly encouraged, but not required.
+         */
+        this.distanceDriven = 0;
+        this.fuelConsumed = 0;
+        this.vin = null;
+    }
     
-    
-    
+    /**
+     * Overloaded constructor constructs a MileageTracker object with the specifed miels driven and fuel consumed.
+     * 
+     * @param initialDistanceDriven  the initial mileage of the car
+     * @param intialFuelConsumed     the initial fuel consumed by the car
+     */
+    public MileageTracker(int initialDistanceDriven, int intialFuelConsumed)
+    {
+        
+    }
     
     
     
@@ -117,7 +146,6 @@ public class MileageTracker
         //vin = vin;
     }
 }
-
 
 
 
