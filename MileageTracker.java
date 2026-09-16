@@ -45,6 +45,7 @@ public class MileageTracker
         this.distanceDriven = 0;
         this.fuelConsumed = 0;
         this.vin = null;
+        System.out.println("Default constructor is running...");
     }
     
     /**
@@ -53,13 +54,13 @@ public class MileageTracker
      * @param initialDistanceDriven  the initial mileage of the car
      * @param intialFuelConsumed     the initial fuel consumed by the car
      */
-    public MileageTracker(int initialDistanceDriven, int intialFuelConsumed)
+    public MileageTracker(int initialDistanceDriven, int initialFuelConsumed)
     {
-        
+        this.distanceDriven =  initialDistanceDriven;
+        this.fuelConsumed = initialFuelConsumed;
+        this.vin = null;
+        System.out.println("Custom constructor is running...");
     }
-    
-    
-    
     
     /*
      * 1. Define methods by specifying:
@@ -76,7 +77,8 @@ public class MileageTracker
      */
     public void incrementDistanceDriven(int miles)
     {
-        // to be implemented later
+        //this.distanceDriven = this.distanceDriven + miles;
+        this.distanceDriven += miles;
     }
     
     /**
@@ -86,7 +88,7 @@ public class MileageTracker
      */
     public int getDistanceDriven()
     {
-        return 0;  // will fix later
+        return this.distanceDriven;
     }
     
     
@@ -98,7 +100,7 @@ public class MileageTracker
      */
     public void incrementFuelConsumed(int gallons)
     {
-        //this.fuelConsumed += gallons;
+        this.fuelConsumed += gallons;
     }
     
     /**
@@ -108,8 +110,7 @@ public class MileageTracker
      */
     public int getFuelConsumed()
     {
-        //return this.fuelConsumed;
-        return 0;
+        return this.fuelConsumed;
     }
     
     
@@ -120,9 +121,8 @@ public class MileageTracker
      */
     public int getMileage()
     {
-        //int mileage = this.fuelConsumed / this.distanceDriven;
-        //return mileage;
-        return 0;
+        int mileage = this.distanceDriven / this.fuelConsumed;
+        return mileage;
     }
     
     /**
@@ -132,8 +132,7 @@ public class MileageTracker
      */
     public String getVIN()
     {
-        //return this.vin;
-        return "";
+        return this.vin;
     }
     
     /**
@@ -141,10 +140,26 @@ public class MileageTracker
      * 
      * @param vin    the vehicle identification (VIN) of this car
      */
-    public void setVIN(String vin)
+    public void setVIN(String newVIN)
     {
-        //vin = vin;
+        /*
+         * When a local or parameter variable has the same name as an instance variable, it "shadows" it.
+         * 
+         *      In this case, the vin assigned to is the parameter vin, not the intended instance 
+         *      variable vin.
+         *      
+         *      To refer explicitly to the instance variable, use "this".
+         */
+        // bad
+        vin = vin;
+        
+        // better
+        this.vin = vin;
+        
+        // best practice: name local and parameter variables something else (not the instance variable name)
+        this.vin = newVIN;
     }
+
 }
 
 
