@@ -47,7 +47,7 @@ public class MileageTracker
         this.distanceDriven = 0;
         this.fuelConsumed = 0;
         this.vin = null;
-        
+        System.out.println("Default constructor running...");
     }
     
     /**
@@ -58,13 +58,11 @@ public class MileageTracker
      */
     public MileageTracker(int initialDistanceDriven, int initialFuelConsumed)
     {
+        this.distanceDriven = initialDistanceDriven;
+        this.fuelConsumed = initialFuelConsumed;
         this.vin = null;
+        System.out.println("Custom constructor running...");
     }
-    
-    
-    
-    
-     
     
     
     /*
@@ -84,7 +82,8 @@ public class MileageTracker
      */
     public void incrementDistanceDriven(int miles)
     {
-        // to be implemented later
+        //this.distanceDriven = this.distanceDriven + miles;
+        this.distanceDriven += miles;
     }
     
     /**
@@ -94,10 +93,8 @@ public class MileageTracker
      */
     public int getDistanceDriven()
     {
-        return 0;
+        return this.distanceDriven;
     }
-    
-    
     
     
     /**
@@ -107,7 +104,7 @@ public class MileageTracker
      */
     public void incrementFuelConsumed(int gallons)
     {
-        //this.fuelConsumed += gallons;
+        this.fuelConsumed += gallons;
     }
     
     /**
@@ -117,8 +114,7 @@ public class MileageTracker
      */
     public int getFuelConsumed()
     {
-        //return this.fuelConsumed;
-        return 0;
+        return this.fuelConsumed;
     }
     
     
@@ -129,9 +125,8 @@ public class MileageTracker
      */
     public int getMileage()
     {
-        //int mileage = this.fuelConsumed / this.distanceDriven;
-        //return mileage;
-        return 0;
+        int mileage = this.distanceDriven / this.fuelConsumed;
+        return mileage;
     }
     
     /**
@@ -141,8 +136,7 @@ public class MileageTracker
      */
     public String getVIN()
     {
-        //return this.vin;
-        return "";
+        return this.vin;
     }
     
     /**
@@ -150,16 +144,29 @@ public class MileageTracker
      * 
      * @param vin    the vehicle identification (VIN) of this car
      */
-    public void setVIN(String vin)
+    public void setVIN(String newVIN)
     {
+        /*
+         * When the paramter is named vin it shadows the instance variable.
+         * 
+         * Local and parameter variable with the same name as instance varaiables will override the instance vairbales.
+         * In this case, the parameter gets assinged to and not the instance vairable.
+         * 
+         * To refer explicitly to an instance vairable, use "this".
+         */
+        // bad
         //vin = vin;
+        
+        //better
+        //this.vin = vin;
+        
+        // best practice: name local and parameter vairables something differnet than instance varianbles
+        this.vin = newVIN;
+        
     }
     
     
-    public static void main()
-    {
-        // client code goes here
-    }
+    
 }
 
 
