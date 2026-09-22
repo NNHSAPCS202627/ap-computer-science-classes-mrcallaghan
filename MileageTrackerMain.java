@@ -11,6 +11,9 @@ public class MileageTrackerMain
     {
         // using the default constuctor
         MileageTracker car1 = new MileageTracker();
+        car1.incrementDistanceDriven(100);
+        car1.incrementFuelConsumed(5);
+        car1.setVIN("VR128917403124004");
         System.out.println(car1);
         
         // using the custom constructor

@@ -4,7 +4,7 @@
  * @author mrcallaghan
  * @version 14sep2026
  */
-public class MileageTracker
+public class MileageTracker 
 {
     /*
      * 2. Define the instance variables, or attributes (to store the object's attributes):
@@ -158,6 +158,28 @@ public class MileageTracker
         
         // best practice: name local and parameter variables something else (not the instance variable name)
         this.vin = newVIN;
+    }
+    
+    /*
+     * The toString methodis called automatically whenever Java need to convert this object to a string.
+     *      This string should contain a concise description of the object, usually including all instance
+     *      variables and thier values.
+     *      
+     *      It is recommended that you implement this method each time you write a class.
+     *      
+     *      The method signature (or header) MUST match that of the object class.  We have to write
+     *      the method like this:
+     */
+    public String toString()
+    {
+        String str = "";
+        str = "\nMileageTracker object: " + "\nVIN: " + this.vin + 
+                "\nMiles driven: " + this.distanceDriven + " miles" + 
+                "\nFuel consumed: " + this.fuelConsumed + " gallons" + 
+                // methods can be called from other methods using "this." syntax!
+                "\nMileage: " + this.getMileage() + " mpg";
+        
+        return str;
     }
 
 }
