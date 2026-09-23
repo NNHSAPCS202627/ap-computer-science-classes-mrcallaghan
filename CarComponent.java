@@ -21,6 +21,7 @@ public class CarComponent extends JComponent
     public void paintComponent(Graphics g)
     {  
         // cast to Graphics2D object (leave as first line of method)
+        //      g2 is what you draw with (like the Turtle's pen)
         Graphics2D g2 = (Graphics2D) g;  
 
         // initialize new Car object(s)
@@ -30,9 +31,11 @@ public class CarComponent extends JComponent
         int y = this.getHeight() - 30;
 
         Car car2 = new Car(x, y); 
+        Car car3 = new Car(50, 50); 
 
-        // draw cars
+        // draw cars (must have the g2 variable as the argument so you draw stuff!)
         car1.draw(g2);
-        car2.draw(g2);      
+        car2.draw(g2);   
+        car3.draw(g2);
     }
 }
