@@ -21,7 +21,24 @@ public class WaterBottle
     }
     
     // subsequent warmups: methods
-
+    // accessor 
+    public double getFluidAmount()
+    {
+        return this.fluidAmount;
+    }
+    
+    // mutator
+    public void setFluidAmount(double newAmount)
+    {
+        this.fluidAmount = newAmount;
+    }
+    
+    
+    
+    
+    
+    
+    
     
     
 
