@@ -21,4 +21,30 @@ public class WaterBottle
     }
 
     // List of methods
+    
+    /*
+     * Accessor method
+     */
+    public double getFluidAmount()
+    {
+        return this.fluidAmount;
+    }
+    
+    /*
+     * Mutator method
+     */
+    public void setFluidAmount(double newAmount)
+    {
+        this.fluidAmount = newAmount;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

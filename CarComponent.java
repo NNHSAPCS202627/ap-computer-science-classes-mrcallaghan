@@ -21,11 +21,13 @@ public class CarComponent extends JComponent
     public void paintComponent(Graphics g)
     {  
         // cast to Graphics2D object (leave as first line of method)
+        //  Graphics2D object is like the Turtle pen - it draws on the canvas (i.e., JComponent)
         Graphics2D g2 = (Graphics2D) g;  
 
         // initialize new Car object(s)
         Car car1 = new Car(0, 0); 
-
+        
+        // in this case "this" is a JComponent, so you can run methods to query about it
         int x = this.getWidth() - 60;
         int y = this.getHeight() - 30;
 

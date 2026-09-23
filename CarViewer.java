@@ -15,7 +15,8 @@ public class CarViewer
       frame.setTitle("Two cars");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
-      // initialize a CarComponent() component object
+      // initialize a CarComponent() component object (this is like the Canvas you draw on, 
+      //                                                kind of like a Turtle World)
       CarComponent component = new CarComponent();
       
       // add the component to the frame and make visible
