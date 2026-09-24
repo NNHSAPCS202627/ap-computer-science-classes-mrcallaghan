@@ -7,7 +7,7 @@ public class CarViewer
 {
    public static void main(String[] args)
    {
-      // create frame object
+      // create frame object  (the pop-up window)
        JFrame frame = new JFrame();  
        
       // set frame attributes
