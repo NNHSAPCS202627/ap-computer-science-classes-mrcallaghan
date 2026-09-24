@@ -5,7 +5,7 @@ import javax.swing.JFrame;
  */
 public class CarViewer
 {
-    public static void main(String[] args) throws InterruptedException
+    public static void main(String[] args) 
     {
         // create frame object
         JFrame frame = new JFrame();  
@@ -22,11 +22,21 @@ public class CarViewer
         // add the component to the frame and make visible
         frame.add(component);
         frame.setVisible(true);
-
-        for(int i = 0; i < 100; i++)
+        
+        // execute 100 frames for the animation with a 1 second delay
+        int frames = 100;
+        int delay = 1000; // 1 second
+        for(int i = 0; i < frames; i++)
         {
             component.nextFrame();
-            Thread.sleep( 1000 );
+            try
+            {
+                Thread.sleep( delay );
+            }
+            catch (InterruptedException ie)
+            {
+                ie.printStackTrace();
+            }
         }
     }
 }
