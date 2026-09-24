@@ -23,6 +23,11 @@ public class Car
       this.xLeft = initialX;
       this.yTop = initialY;
    }
+   
+   public void moveRight(int n)
+   {
+        this.xLeft += n;
+    }
 
    /**
       Draws the car.
