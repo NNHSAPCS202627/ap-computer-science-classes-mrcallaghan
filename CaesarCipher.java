@@ -5,8 +5,8 @@ import java.util.Scanner;
  *      Caesar Cipher.
  *      (as described in The Code Book by Simon Singh)
  *
- * @author 
- * @version 
+ * @author mcallaghan
+ * @version 28sept2026
  */
 public class CaesarCipher
 {
@@ -22,7 +22,7 @@ public class CaesarCipher
     
     public CaesarCipher(String initialKeyphrase)
     {
-        //this.keyphrase = initialKeyphrase;
+        this.keyphrase = initialKeyphrase;
         // prepare the keyphrase by removing duplicate letters
         this.compressKeyphrase(initialKeyphrase);
     }
@@ -58,7 +58,9 @@ public class CaesarCipher
 
         // one method in a class can invoke another method in the same class
         //  we invoke the method on "this"
-        long totalSeconds = 0;
+        
+        // a long is like a bigger version of the int type
+        long totalSeconds = this.calculateAverageTimeToCrack(secPerGuess);
         
         /*
          * Use integer division to calculate how many whole minutes are in the

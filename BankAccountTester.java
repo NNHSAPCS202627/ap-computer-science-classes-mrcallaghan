@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
    A class to test the BankAccount class.
 */
@@ -10,5 +12,9 @@ public class BankAccountTester
       harrysChecking.withdraw(500);
       System.out.println(harrysChecking.getBalance());
       System.out.println("Expected: 1500");
+      
+      Random gen = new Random();
+      double n = gen.nextDouble(20);
+      
    }
 }
