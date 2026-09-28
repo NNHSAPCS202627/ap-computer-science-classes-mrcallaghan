@@ -22,7 +22,7 @@ public class CaesarCipher
     
     public CaesarCipher(String initialKeyphrase)
     {
-        //this.keyphrase = initialKeyphrase;
+        this.keyphrase = initialKeyphrase;
         // prepare the keyphrase by removing duplicate letters
         this.compressKeyphrase(initialKeyphrase);
     }
@@ -58,7 +58,7 @@ public class CaesarCipher
 
         // one method in a class can invoke another method in the same class
         //  we invoke the method on "this"
-        long totalSeconds = 0;
+        long totalSeconds = this.calculateAverageTimeToCrack(secPerGuess);
         
         /*
          * Use integer division to calculate how many whole minutes are in the
