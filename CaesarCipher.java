@@ -5,8 +5,8 @@ import java.util.Scanner;
  *      Caesar Cipher.
  *      (as described in The Code Book by Simon Singh)
  *
- * @author 
- * @version 
+ * @author mrcallaghan
+ * @version 28sept2026
  */
 public class CaesarCipher
 {
