@@ -24,7 +24,7 @@ public class CaesarCipher
     {
         this.keyphrase = initialKeyphrase;
         // prepare the keyphrase by removing duplicate letters
-        this.compressKeyphrase(initialKeyphrase);
+        //this.compressKeyphrase(initialKeyphrase);
     }
     
     /**
