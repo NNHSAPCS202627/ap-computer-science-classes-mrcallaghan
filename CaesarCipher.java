@@ -75,9 +75,9 @@ public class CaesarCipher
          *      floating-point division when one or both operands are floating-point types.
          *      
          *  For example:
-         *      3 / 4 =>           (3 and 4 are int literals)
-         *      3.0 / 4 =>         (3.0 is a double literal)
-         *      4.0 / 1.0 =>       
+         *      3 / 4 =>  0         (3 and 4 are int literals)
+         *      3.0 / 4 =>  0.75       (3.0 is a double literal)
+         *      4.0 / 1.0 =>       4.0
          */
         long wholeMinutes = totalSeconds / SECONDS_FOR_EVERY_MINUTE;
         
@@ -90,23 +90,24 @@ public class CaesarCipher
          *  It can be very useful when paired with integer division.
          *  
          *  For example:
-         *      7 % 2 => 
-         *      11 % 3 => 
-         *      6 % 2 => 
-         *      4 % 11 => 
+         *      7 % 2 => 1
+         *      11 % 3 =>  2
+         *      6 % 2 =>    0
+         *      4 % 11 =>  4 
          *      
          *  % 2 is frequently used to test odd/even (odd => 1; even => 0)
          */
         long leftoverSeconds = totalSeconds % SECONDS_FOR_EVERY_MINUTE;
         
-        long wholeHours = 0;
-        long leftoverMinutes = 0;
+        long wholeHours = wholeMinutes / MINUTES_FOR_EVERY_HOUR;
+        long leftoverMinutes = wholeMinutes % MINUTES_FOR_EVERY_HOUR;
+        
+        // do the last two on your own!!
+        long wholeDays = wholeHours / HOURS_FOR_EVERY_DAY;
+        long leftoverHours = wholeHours % HOURS_FOR_EVERY_DAY;
     
-        long wholeDays = 0;
-        long leftoverHours = 0;
-    
-        long wholeYears = 0;
-        long leftoverDays = 0;
+        long wholeYears = wholeDays / DAYS_FOR_EVERY_YEAR;
+        long leftoverDays = wholeDays % DAYS_FOR_EVERY_YEAR;
     
         desc = "Average time to crack: " + wholeYears + " years, " + leftoverDays +
         " days, " + leftoverHours + " hours, " + leftoverMinutes + " minutes, " +
@@ -121,7 +122,9 @@ public class CaesarCipher
          *  
          *  Java only automatically performs widening conversions.
          */
-        double yearsAsDecimal = 0;
+        
+        double yearsAsDecimal = totalSeconds;  // widening conversion
+        //totalSeconds = yearsAsDecimal;  // narrowing conversion (prevented by default)
         
         /*
          * Arithmetic Promotion
@@ -138,7 +141,8 @@ public class CaesarCipher
          *  This promotion may be too late! If the multiplication overflows an int,
          *      the wrong value will be promoted to a long and stored.
          */
-        final long SECONDS_FOR_EVERY_YEAR = 0;
+        final long SECONDS_FOR_EVERY_YEAR = SECONDS_FOR_EVERY_MINUTE * MINUTES_FOR_EVERY_HOUR *
+            HOURS_FOR_EVERY_DAY * DAYS_FOR_EVERY_YEAR;
     
         /*
          * In this example, the value of SECONDS_FOR_EVERY_YEAR is promoted to a double
@@ -155,7 +159,7 @@ public class CaesarCipher
          * To force a conversion, use the cast operator.
          *      A cast is the "I know what I'm doing, trust me" conversion.
          *      
-         *  (int)84.69 => truncates to an int with a value of 84
+         *  (int)84.69 => 84 truncates to an int with a value of 84
          *  (int)(3.6 + 0.5) => truncates 4.1 to an int with a value of 4
          *  
          *  If we want to round a double to the nearest integer value, one approach is
@@ -165,7 +169,7 @@ public class CaesarCipher
          *  The following divides yearsAsDecimal by 10, then rounds the resulting long
          *      to an int
          */
-        int decades = 0;
+        int decades = (int)((yearsAsDecimal / 10) + 0.5);
         
         /*
          * However, you cannot always cast a value to another type. For example,
