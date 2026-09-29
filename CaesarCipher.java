@@ -5,8 +5,8 @@ import java.util.Scanner;
  *      Caesar Cipher.
  *      (as described in The Code Book by Simon Singh)
  *
- * @author 
- * @version 
+ * @author mcallaghan
+ * @version 29sep2026
  */
 public class CaesarCipher
 {
@@ -24,7 +24,7 @@ public class CaesarCipher
     {
         this.keyphrase = initialKeyphrase;
         // prepare the keyphrase by removing duplicate letters
-        this.compressKeyphrase(initialKeyphrase);
+        //this.compressKeyphrase(initialKeyphrase);
     }
     
     /**
@@ -70,9 +70,9 @@ public class CaesarCipher
          *      floating-point division when one or both operands are floating-point types.
          *      
          *  For example:
-         *      3 / 4 =>           (3 and 4 are int literals)
-         *      3.0 / 4 =>         (3.0 is a double literal)
-         *      4.0 / 1.0 =>       
+         *      3 / 4 =>  0         (3 and 4 are int literals)
+         *      3.0 / 4 =>   0.75      (3.0 is a double literal)
+         *      4.0 / 1.0 =>  4.0     
          */
         long wholeMinutes = totalSeconds / SECONDS_FOR_EVERY_MINUTE;
         
@@ -85,23 +85,24 @@ public class CaesarCipher
          *  It can be very useful when paired with integer division.
          *  
          *  For example:
-         *      7 % 2 => 
-         *      11 % 3 => 
-         *      6 % 2 => 
-         *      4 % 11 => 
+         *      7 % 2 => 1
+         *      11 % 3 => 2
+         *      6 % 2 => 0
+         *      4 % 11 => 4
          *      
          *  % 2 is frequently used to test odd/even (odd => 1; even => 0)
          */
         long leftoverSeconds = totalSeconds % SECONDS_FOR_EVERY_MINUTE;
         
-        long wholeHours = 0;
-        long leftoverMinutes = 0;
+        // complete the rest of the conversions with your partner:
+        long wholeHours = wholeMinutes / MINUTES_FOR_EVERY_HOUR;
+        long leftoverMinutes = wholeMinutes % MINUTES_FOR_EVERY_HOUR;
     
-        long wholeDays = 0;
-        long leftoverHours = 0;
+        long wholeDays = wholeHours / HOURS_FOR_EVERY_DAY;
+        long leftoverHours = wholeHours % HOURS_FOR_EVERY_DAY;
     
-        long wholeYears = 0;
-        long leftoverDays = 0;
+        long wholeYears = wholeDays / DAYS_FOR_EVERY_YEAR;
+        long leftoverDays = wholeDays % DAYS_FOR_EVERY_YEAR;
     
         desc = "Average time to crack: " + wholeYears + " years, " + leftoverDays +
         " days, " + leftoverHours + " hours, " + leftoverMinutes + " minutes, " +
@@ -116,7 +117,8 @@ public class CaesarCipher
          *  
          *  Java only automatically performs widening conversions.
          */
-        double yearsAsDecimal = 0;
+        double yearsAsDecimal = totalSeconds;  // widening conversion
+        //int demoNumber = yearsAsDecimal;        // narrowing conversion (won't compile!)
         
         /*
          * Arithmetic Promotion
@@ -133,7 +135,8 @@ public class CaesarCipher
          *  This promotion may be too late! If the multiplication overflows an int,
          *      the wrong value will be promoted to a long and stored.
          */
-        final long SECONDS_FOR_EVERY_YEAR = 0;
+        final long SECONDS_FOR_EVERY_YEAR = SECONDS_FOR_EVERY_MINUTE * MINUTES_FOR_EVERY_HOUR * 
+            HOURS_FOR_EVERY_DAY * DAYS_FOR_EVERY_YEAR;
     
         /*
          * In this example, the value of SECONDS_FOR_EVERY_YEAR is promoted to a double
@@ -160,7 +163,7 @@ public class CaesarCipher
          *  The following divides yearsAsDecimal by 10, then rounds the resulting long
          *      to an int
          */
-        int decades = 0;
+        int decades = (int) ((yearsAsDecimal / 10) + 0.5);
         
         /*
          * However, you cannot always cast a value to another type. For example,

@@ -3,8 +3,8 @@ import java.util.Scanner;
 /**
  * Demonstrates the CaesarCipher class
  *
- * @author 
- * @version 
+ * @author mrcallaghan
+ * @version 28sep2026
  */
 public class CaesarCipherDemo
 {
