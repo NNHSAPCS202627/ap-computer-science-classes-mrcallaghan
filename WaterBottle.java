@@ -2,40 +2,41 @@ import java.awt.Color;
 
 public class WaterBottle
 {
-    // Warm-up #1: instance variables
+    // instance variables
     private Color color;
     private double fluidAmount;
-
-    // Warm-up #2: default constructor
+    private final double OZ_TO_ML = 29.5735; 
+    
+    // default constructor
     public WaterBottle()
     {
         this.color = Color.RED;
         this.fluidAmount = 0.0;
     }
-
-    // Warm-up #3: custom constructor
+    
+    // custom constructor
     public WaterBottle(Color initialColor, double initialFluidAmount)
     {
         this.color = initialColor;
         this.fluidAmount = initialFluidAmount;
     }
-
-    // List of methods
     
-    /*
-     * Accessor method
-     */
+    // subsequent warmups: methods
+    // accessor 
     public double getFluidAmount()
     {
         return this.fluidAmount;
     }
     
-    /*
-     * Mutator method
-     */
+    // mutator
     public void setFluidAmount(double newAmount)
     {
         this.fluidAmount = newAmount;
+    }
+    
+    public void ozToMl()
+    {
+        this.fluidAmount *= OZ_TO_ML;
     }
     
     
@@ -46,5 +47,5 @@ public class WaterBottle
     
     
     
-    
+
 }
