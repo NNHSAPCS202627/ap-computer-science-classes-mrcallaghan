@@ -360,6 +360,19 @@ public class CaesarCipher
         return worstCaseTimeToCrack/2;
     }
     
+    /*
+     * This method is static and, therefore, is independent of the state of a 
+     *  CaesarCipher object.
+     *  
+     *  As a result, this method may be invoked on the class instead of a variabe that 
+     *      references an object.
+     *      
+     *      e.g., CaesarCipher.generateKeyphrase(7);
+     *      
+     * The limitation is that this method cannot access any instance variables
+     *  or invoke any non-static, instance methods (there is no "this").
+     * 
+     */
     /**
      * Generates a pseudorandom keyphrase of the specified length in characters
      * 
@@ -385,6 +398,8 @@ public class CaesarCipher
              *  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
              *  0 1 2 3 4 5 6    ...                              25    <= indices
              */
+            int letterIndex = (int)(Math.random() * 26);  // 0 - 25
+            keyphrase += CaesarCipher.ALPHABET.substring(letterIndex, letterIndex + 1);
             
         }
         
