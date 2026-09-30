@@ -24,7 +24,8 @@ public class CaesarCipher
     {
         this.keyphrase = initialKeyphrase;
         // prepare the keyphrase by removing duplicate letters
-        //this.compressKeyphrase(initialKeyphrase);
+        this.compressKeyphrase(initialKeyphrase);
+        System.out.println("Compressed keyphrase: " + this.keyphrase);
     }
     
     /**
@@ -192,7 +193,7 @@ public class CaesarCipher
          * length
          *      returns the number of characters in the string
          */
-        int keyphraseLength = 0;
+        int keyphraseLength = initKeyphrase.length();
         
         for(int i = 0; i < keyphraseLength; i++)
         {
@@ -207,7 +208,7 @@ public class CaesarCipher
              *  
              *  length: 6
              */
-            
+            String letter = initKeyphrase.substring(i, i +1);
             
             /*
              * substring
@@ -224,7 +225,7 @@ public class CaesarCipher
              *  
              *  length: 6
              */
-            
+            String restOfKeyphrase = initKeyphrase.substring(i + 1);
             
             /*
              * indexOf
@@ -240,7 +241,7 @@ public class CaesarCipher
              *  
              *  For example, restOfKeyphrase("SA") => returns 2
              */
-            
+            int index = restOfKeyphrase.indexOf(letter);
             
             /*
              * String concatenation
@@ -254,7 +255,10 @@ public class CaesarCipher
              *  int x = 7;
              *  String xAsString = "" + x;          // xAsString => "7"
              */
-            
+            if(index == -1)  // if the letter is not a duiplicate
+            {
+                this.keyphrase += letter;
+            }
         }
     }
     
