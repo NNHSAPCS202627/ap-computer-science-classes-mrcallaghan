@@ -24,7 +24,8 @@ public class CaesarCipher
     {
         this.keyphrase = initialKeyphrase;
         // prepare the keyphrase by removing duplicate letters
-        //this.compressKeyphrase(initialKeyphrase);
+        this.compressKeyphrase(initialKeyphrase);
+        System.out.println("Compressed keyphrase: " + this.keyphrase);
     }
     
     /**
@@ -196,9 +197,10 @@ public class CaesarCipher
          * length
          *      returns the number of characters in the string
          */
-        int keyphraseLength = 0;
+        int keyphraseLength = initKeyphrase.length();
         
-        for(int i = 0; i < keyphraseLength; i++)
+        // execute the number of times needed to access each character in the keyphrase
+        for(int i = 0; i < keyphraseLength; i++)  
         {
             /*
              * substring
@@ -211,7 +213,7 @@ public class CaesarCipher
              *  
              *  length: 6
              */
-            
+            String letter = initKeyphrase.substring(i, i + 1);
             
             /*
              * substring
@@ -228,7 +230,7 @@ public class CaesarCipher
              *  
              *  length: 6
              */
-            
+            String restOfKeyphrase = initKeyphrase.substring(i + 1);
             
             /*
              * indexOf
@@ -242,9 +244,10 @@ public class CaesarCipher
              *  
              *  length: 5
              *  
-             *  For example, restOfKeyphrase("SA") => returns 2
+             *  For example, restOfKeyphrase.indexOf("SA") => returns 2
+             *               restOfKeyphrase.indexOf("X") => returns -1
              */
-            
+            int index = restOfKeyphrase.indexOf(letter);
             
             /*
              * String concatenation
@@ -258,7 +261,10 @@ public class CaesarCipher
              *  int x = 7;
              *  String xAsString = "" + x;          // xAsString => "7"
              */
-            
+            if(index == -1)  // if the letter is not a duplicate
+            {
+                this.keyphrase = this.keyphrase + letter;
+            }
         }
     }
     
@@ -360,6 +366,19 @@ public class CaesarCipher
         return worstCaseTimeToCrack/2;
     }
     
+    /*
+     * This method is static and, therefor, is independent of the state of any CaesarCipher 
+     *  object.
+     *  
+     *  As a result, this method is invoked on the class instead of a vairable that 
+     *      references an object.
+     *      
+     *      CaesarCipher.generateKeyphrase(7);
+     *      
+     *  The limitation is that this method cannot access any instance vairables or 
+     *      invoke and instance methods (non-static methods).  There is no "this"!
+     */
+    
     /**
      * Generates a pseudorandom keyphrase of the specified length in characters
      * 
@@ -385,7 +404,8 @@ public class CaesarCipher
              *  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
              *  0 1 2 3 4 5 6    ...                              25    <= indices
              */
-            
+            int letterIndex = (int)(Math.random() * 26);  // 0 - 25
+            keyphrase += CaesarCipher.ALPHABET.substring(letterIndex, letterIndex + 1);
         }
         
         return keyphrase;
