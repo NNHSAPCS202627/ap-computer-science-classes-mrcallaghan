@@ -5,6 +5,7 @@ public class WaterBottle
     // instance variables
     private Color color;
     private double fluidAmount;
+    private final double OZ_TO_ML = 29.5735; 
     
     // default constructor
     public WaterBottle()
@@ -31,6 +32,11 @@ public class WaterBottle
     public void setFluidAmount(double newAmount)
     {
         this.fluidAmount = newAmount;
+    }
+    
+    public void ozToMl()
+    {
+        this.fluidAmount *= OZ_TO_ML;
     }
     
     
