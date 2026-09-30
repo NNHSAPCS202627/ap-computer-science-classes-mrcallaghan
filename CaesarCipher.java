@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class CaesarCipher
 {
     /*
-     * static: same value for the variable for all objects of the class.
+     * static: same value for the variable for all objects of the class and no objects.
      *      This is like class attributes in Python.
      *      Static class variables can be accessed directly through the class
      *          (e.g., CaesarCipher.ALPHABET, Math.PI, Color.RED).
@@ -24,7 +24,8 @@ public class CaesarCipher
     {
         this.keyphrase = initialKeyphrase;
         // prepare the keyphrase by removing duplicate letters
-        //this.compressKeyphrase(initialKeyphrase);
+        this.compressKeyphrase(initialKeyphrase);
+        System.out.println("Compressed keyphrase: " + this.keyphrase);
     }
     
     /**
@@ -196,10 +197,11 @@ public class CaesarCipher
         
         /*
          * length
-         *      returns the number of characters in the string
+         *      String method that returns the number of characters in the string
          */
-        int keyphraseLength = 0;
+        int keyphraseLength = initKeyphrase.length();
         
+        // access each charcater in the keyphrase one at a time
         for(int i = 0; i < keyphraseLength; i++)
         {
             /*
@@ -213,7 +215,7 @@ public class CaesarCipher
              *  
              *  length: 6
              */
-            
+            String letter = initKeyphrase.substring(i, i + 1);  // 0, 1 for the first loop
             
             /*
              * substring
@@ -230,7 +232,7 @@ public class CaesarCipher
              *  
              *  length: 6
              */
-            
+            String restOfKeyphrase = initKeyphrase.substring(i + 1);
             
             /*
              * indexOf
@@ -244,9 +246,10 @@ public class CaesarCipher
              *  
              *  length: 5
              *  
-             *  For example, restOfKeyphrase("SA") => returns 2
+             *  For example, restOfKeyphrase.indexOf("SA") => returns 2
+             *               restOfKeyphrase.indexOf("X")  => returns -1
              */
-            
+            int index = restOfKeyphrase.indexOf(letter);
             
             /*
              * String concatenation
@@ -260,6 +263,10 @@ public class CaesarCipher
              *  int x = 7;
              *  String xAsString = "" + x;          // xAsString => "7"
              */
+            if (index == -1)  // true if the letter is not a duplicate
+            {
+                this.keyphrase += letter;
+            }
             
         }
     }
@@ -362,6 +369,19 @@ public class CaesarCipher
         return worstCaseTimeToCrack/2;
     }
     
+    /*
+     * This method is static and, therefore, is independent of the state of any CaesarCipher
+     *  objects.
+     *  
+     *  As a result, this method may be invoked on the class instead of a variable that 
+     *      references an object:
+     *      
+     *      CaesarCipher.generateKeyphrase(7);
+     *  
+     *  The limitation is that this method cannot access any instance variables or instance
+     *      methods (non-static methods).  There is no "this"!
+     */
+    
     /**
      * Generates a pseudorandom keyphrase of the specified length in characters
      * 
@@ -387,7 +407,8 @@ public class CaesarCipher
              *  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
              *  0 1 2 3 4 5 6    ...                              25    <= indices
              */
-            
+            int letterIndex = (int)(Math.random() * 26) ;  // 0 - 25
+            keyphrase += CaesarCipher.ALPHABET.substring(letterIndex, letterIndex + 1);
         }
         
         return keyphrase;
