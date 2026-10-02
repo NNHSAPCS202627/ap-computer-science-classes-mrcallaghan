@@ -44,10 +44,22 @@ public class WaterBottle
     
     public void mlToOz()
     {
-        
+        // ...
     }
     
+    // warm-up #6
+    public void drink(double amountDrunk)
+    {
+        this.fluidAmount -= amountDrunk;
+    }
     
+    // warm-up #7
+    @Override  // not required, but a good idea
+    public String toString()
+    {
+        String str = "Color: " + this.color + " Fluid Amount: " + this.getFluidAmount();
+        return str;
+    }
     
     
     
