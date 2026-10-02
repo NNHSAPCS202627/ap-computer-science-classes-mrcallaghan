@@ -39,8 +39,20 @@ public class WaterBottle
         this.fluidAmount *= OZ_TO_ML;
     }
     
+    // warmup 6
+    public void drink(double amountDrunk)
+    {
+        this.fluidAmount -= amountDrunk;
+    }
     
-    
+    // warmup 7
+    @Override
+    public String toString()
+    {
+        String str = "Color: " + this.color + " Fluid Amount: " + this.getFluidAmount();
+        //                                                          or this.fluidAmount
+        return str;
+    }
     
     
     
