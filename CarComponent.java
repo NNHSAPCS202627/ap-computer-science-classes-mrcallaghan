@@ -7,8 +7,12 @@ This component constructs and draws car shapes.
  */
 public class CarComponent extends JComponent  // make a custom Jcomponent called CarComponent
 {  
+    // instance variable to capture the animated objoect references
+    private Car car1;
+    
     public CarComponent()
     {
+        this.car1 = new Car(0, 0);
     }
 
     /**
@@ -25,7 +29,7 @@ public class CarComponent extends JComponent  // make a custom Jcomponent called
         Graphics2D g2 = (Graphics2D) g;  
 
         // initialize new Car object(s)
-        Car car1 = new Car(0, 0); 
+         
         
         // "this" is the JComponent (i.e., CarComponent)
         //      Similar to the Turtle's World
@@ -35,7 +39,22 @@ public class CarComponent extends JComponent  // make a custom Jcomponent called
         Car car2 = new Car(x, y); 
 
         // draw cars
-        car1.draw(g2);
+        this.car1.draw(g2);
         car2.draw(g2);      
+    }
+    
+    /**
+     * Update the objects such that they appear to be 
+     *   animated when they are next drawn (repainted).
+     */
+    public void nextFrame()
+    {
+        // update Car objects for the next frame so they appear animated
+        // ...
+        this.car1.drive();
+        // request that the Java Runtime repaints this component by invoking 
+        //  the paintComponent method
+        //  do not explicitly invoke the paintComponent method
+        this.repaint();
     }
 }
