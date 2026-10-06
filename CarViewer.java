@@ -5,22 +5,38 @@ import javax.swing.JFrame;
  */
 public class CarViewer
 {
-   public static void main(String[] args)
-   {
-      // create frame object
-       JFrame frame = new JFrame();  
-       
-      // set frame attributes
-      frame.setSize(300, 400);
-      frame.setTitle("Two cars");
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      
-      // initialize a CarComponent() component object (this is like the Canvas you draw on, 
-      //                                                kind of like a Turtle World)
-      CarComponent component = new CarComponent();
-      
-      // add the component to the frame and make visible
-      frame.add(component);
-      frame.setVisible(true);
-   }
+    public static void main(String[] args)
+    {
+        // create frame object
+        JFrame frame = new JFrame();  
+
+        // set frame attributes
+        frame.setSize(300, 400);
+        frame.setTitle("Two cars");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // initialize a CarComponent() component object (this is like the Canvas you draw on, 
+        //                                                kind of like a Turtle World)
+        CarComponent component = new CarComponent();
+
+        // add the component to the frame and make visible
+        frame.add(component);
+        frame.setVisible(true);
+
+        // execute 100 frames for the animation with a 1 second delay
+        int frames = 100;
+        int delay = 1000; // 1 second
+        for(int i = 0; i < frames; i++)
+        {
+            component.nextFrame();
+            try
+            {
+                Thread.sleep( delay );
+            }
+            catch (InterruptedException ie)
+            {
+                ie.printStackTrace();
+            }
+        }
+    }
 }

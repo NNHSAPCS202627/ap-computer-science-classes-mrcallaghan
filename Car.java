@@ -59,4 +59,21 @@ public class Car
       g2.draw(roofTop);      
       g2.draw(rearWindshield);      
    }
+   
+   /**
+    * Drives the car across the screen.
+    */
+   public void drive()
+   {
+        // move the Car object 2 pixels to the right
+        this.xLeft += 2;
+   }
+   
+   
+   
+   
+   
+   
+   
+   
 }
