@@ -7,7 +7,8 @@ This component constructs and draws car shapes.
  */
 public class CarComponent extends JComponent
 {  
-    // store the Car object as an instance variable so it persists across calls to nextFrame
+    // store the Car object as an instance variable so it persists across calls to the
+    //      nextFrame and paintComponent methods     
     private Car car1;
     
     public CarComponent()
@@ -29,8 +30,6 @@ public class CarComponent extends JComponent
         //  Graphics2D object is like the Turtle pen - it draws on the canvas (i.e., JComponent)
         Graphics2D g2 = (Graphics2D) g;  
 
-        
-        
         // in this case "this" is a JComponent, so you can run methods to query about it
         int x = this.getWidth() - 60;
         int y = this.getHeight() - 30;
