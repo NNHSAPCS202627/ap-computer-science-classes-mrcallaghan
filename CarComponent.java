@@ -7,11 +7,12 @@ This component constructs and draws car shapes.
  */
 public class CarComponent extends JComponent
 {  
+    // for animation to work our Car needs to persist across calls to nextFrame and paintComponent
     private Car car1;
+    
     public CarComponent()
     {
-        // initialize new Car object(s)
-        this.car1 = new Car(0, 0);
+        this.car1 = new Car(0, 0); 
     }
 
     /**
@@ -31,7 +32,7 @@ public class CarComponent extends JComponent
 
         int x = this.getWidth() - 60;
         int y = this.getHeight() - 30;
-
+        
         Car car2 = new Car(x, y); 
         Car car3 = new Car(50, 50); 
 
@@ -41,10 +42,19 @@ public class CarComponent extends JComponent
         car3.draw(g2);
     }
     
-    //
+    /**
+     * Update the objects such that they appear to be 
+     *   animated when they are next drawn (repainted).
+     */
     public void nextFrame()
     {
-        this.car1.moveRight(5);
+        // update Car objects for the next frame so they appear animated
+        // ...
+        this.car1.drive();
+        // request that the Java Runtime repaints this component by invoking 
+        //  the paintComponent method
+        //  do not explicitly invoke the paintComponent method
         this.repaint();
     }
+
 }

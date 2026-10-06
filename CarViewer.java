@@ -22,15 +22,17 @@ public class CarViewer
         // add the component to the frame and make visible
         frame.add(component);
         frame.setVisible(true);
-        
+
         // execute 100 frames for the animation with a 1 second delay
         int frames = 100;
         int delay = 1000; // 1 second
         for(int i = 0; i < frames; i++)
         {
+            // call the nextFrame method on our CarComponent to intiate the next frame
             component.nextFrame();
             try
             {
+                // pauses the program for 1 second
                 Thread.sleep( delay );
             }
             catch (InterruptedException ie)
@@ -38,5 +40,6 @@ public class CarViewer
                 ie.printStackTrace();
             }
         }
+
     }
 }

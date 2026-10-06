@@ -23,11 +23,6 @@ public class Car
       this.xLeft = initialX;
       this.yTop = initialY;
    }
-   
-   public void moveRight(int n)
-   {
-        this.xLeft += n;
-    }
 
    /**
       Draws the car.
@@ -64,4 +59,20 @@ public class Car
       g2.draw(roofTop);      
       g2.draw(rearWindshield);      
    }
+   
+   /**
+    * Updates the car's x-position on the screen 5 pixels to the right.  
+    */
+   public void drive()
+   {
+       this.xLeft += 5;
+   }
+   
+   
+   
+   
+   
+   
+   
+   
 }
