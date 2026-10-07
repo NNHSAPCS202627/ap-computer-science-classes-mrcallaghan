@@ -5,12 +5,12 @@ import javax.swing.JFrame;
  *  frame containing the component. 
  *  Note: It is not necessary to modify this class unless you are exploring extensions.
  * 
- * @author 
- * @version 
+ * @author mcallaghan
+ * @version 07oct2026
  */
 public class CityscapeViewer
 {
-    // the cityscape will be animated for 60 seconds
+    // the cityscape will be animated for 60 seconds with 60 frames
     static final int ANIMATION_TIME_IN_SECONDS = 60;
    
     /**
@@ -39,7 +39,9 @@ public class CityscapeViewer
         // animate the cityscape
         for( int seconds = 0; seconds < ANIMATION_TIME_IN_SECONDS; seconds++ )
         {
+            // go to the next frame
             component.nextFrame();
+            // pause for 1 second
             Thread.sleep( 1000 );
         }
         
