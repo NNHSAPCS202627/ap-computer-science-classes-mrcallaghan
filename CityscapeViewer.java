@@ -5,8 +5,8 @@ import javax.swing.JFrame;
  *  frame containing the component. 
  *  Note: It is not necessary to modify this class unless you are exploring extensions.
  * 
- * @author 
- * @version 
+ * @author mcallaghan
+ * @version 07oct2026
  */
 public class CityscapeViewer
 {
@@ -36,10 +36,11 @@ public class CityscapeViewer
         //  component.
         frame.setVisible(true);
         
-        // animate the cityscape
+        // animate the cityscape; defaults to 60 frames (but you can change it)
         for( int seconds = 0; seconds < ANIMATION_TIME_IN_SECONDS; seconds++ )
         {
             component.nextFrame();
+            // 1 second pause between frames
             Thread.sleep( 1000 );
         }
         
